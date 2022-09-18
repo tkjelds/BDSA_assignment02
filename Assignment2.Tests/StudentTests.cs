@@ -12,7 +12,7 @@ public class StudentTests{
         var result = student.ToString();
         // Then
         Assert.Equal(
-            "Name: Tore Kjelds. Status: Active StartDate: 08/10/2018 00.00.00 EndDate: 10/10/2023 00.00.00 GraduationDate 10/10/2023 00.00.00",
+            "Name: Tore Kjelds. Status: Active StartDate: 08/10/2018 EndDate: 10/10/2023 GraduationDate 10/10/2023",
             result
         );
     }

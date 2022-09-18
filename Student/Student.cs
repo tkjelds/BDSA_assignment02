@@ -36,7 +36,7 @@ public class Student
         Graduated
     }
 
-    public override string ToString() => $"Name: {GivenName} {SurName}. Status: {Status} StartDate: {StartDate} EndDate: {EndDate} GraduationDate {GraduationDate}";
+    public override string ToString() => $"Name: {GivenName} {SurName}. Status: {Status} StartDate: {StartDate.ToString("d")} EndDate: {EndDate.ToString("d")} GraduationDate {GraduationDate.ToString("d")}";
 
 
 }
