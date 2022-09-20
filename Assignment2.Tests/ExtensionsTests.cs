@@ -59,9 +59,9 @@ public class ExtensionsTests
     public void WordCountReturns5()
     {
         // Given
-        var testString = "And And And And And";
+        var testString = "And.And And! And 123 And";
         // When
-        var result = Extensions.WordCount(testString);
+        var result = testString.WordCount();
         // Then
         Assert.Equal(5,result);
     }

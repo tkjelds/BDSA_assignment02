@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace Assignment2.Tests;
 
 public class ImmutableStudentTests{
@@ -5,25 +7,27 @@ public class ImmutableStudentTests{
     public void ImmutableStudentToStringTest()
     {
         // Given
-        var student = new ImmutableStudent(1,"Tore","Kjelds",DateTime.ParseExact("08/10/2018","dd/MM/yyyy", null),
-        DateTime.ParseExact("10/10/2023","dd/MM/yyyy", null),DateTime.ParseExact("10/10/2023","dd/MM/yyyy", null));
+        var startDate = DateTime.ParseExact("08/10/2018","dd/MM/yyyy", CultureInfo.CurrentCulture);
+        var endDate = DateTime.ParseExact("10/10/2023","dd/MM/yyyy", CultureInfo.CurrentCulture);
+        var graduationDate = DateTime.ParseExact("10/10/2023","dd/MM/yyyy", CultureInfo.CurrentCulture);
+        var student = new ImmutableStudent(1,"Tore","Kjelds", startDate, endDate, graduationDate);
         
         var result = student.ToString();
         // Then
         Assert.Equal(
-            "ImmutableStudent { id = 1, GivenName = Tore, SurName = Kjelds, StartDate = 08/10/2018 00.00.00, EndDate = 10/10/2023 00.00.00, GraduationDate = 10/10/2023 00.00.00, Status = Active }",
-            result
+            result,
+            $"ImmutableStudent {{ id = 1, GivenName = Tore, SurName = Kjelds, StartDate = {startDate}, EndDate = {endDate}, GraduationDate = {graduationDate}, Status = Active }}"
         );
     }
     [Fact]
     public void TesttingRecordEqualityReturnsTrue()
     {
         // Given
-        var student1 = new ImmutableStudent(1,"Tore","Kjelds",DateTime.ParseExact("08/10/2018","dd/MM/yyyy", null),
-        DateTime.ParseExact("10/10/2023","dd/MM/yyyy", null),DateTime.ParseExact("10/10/2023","dd/MM/yyyy", null));
+        var student1 = new ImmutableStudent(1,"Tore","Kjelds",DateTime.ParseExact("08/10/2018","dd/MM/yyyy", CultureInfo.CurrentCulture),
+        DateTime.ParseExact("10/10/2023","dd/MM/yyyy", CultureInfo.CurrentCulture),DateTime.ParseExact("10/10/2023","dd/MM/yyyy", CultureInfo.CurrentCulture));
         
-        var student2 = new ImmutableStudent(1,"Tore","Kjelds",DateTime.ParseExact("08/10/2018","dd/MM/yyyy", null),
-        DateTime.ParseExact("10/10/2023","dd/MM/yyyy", null),DateTime.ParseExact("10/10/2023","dd/MM/yyyy", null));
+        var student2 = new ImmutableStudent(1,"Tore","Kjelds",DateTime.ParseExact("08/10/2018","dd/MM/yyyy", CultureInfo.CurrentCulture),
+        DateTime.ParseExact("10/10/2023","dd/MM/yyyy", CultureInfo.CurrentCulture),DateTime.ParseExact("10/10/2023","dd/MM/yyyy", CultureInfo.CurrentCulture));
         
         // When
         var result = student1 == student2;
@@ -34,11 +38,11 @@ public class ImmutableStudentTests{
     public void TestingRecordEqualityReturnFalse()
     {
         // Given
-        var student1 = new ImmutableStudent(1,"Tore","Kjelds",DateTime.ParseExact("08/10/2018","dd/MM/yyyy", null),
-        DateTime.ParseExact("10/10/2023","dd/MM/yyyy", null),DateTime.ParseExact("10/10/2023","dd/MM/yyyy", null));
+        var student1 = new ImmutableStudent(1,"Tore","Kjelds",DateTime.ParseExact("08/10/2018","dd/MM/yyyy", CultureInfo.CurrentCulture),
+        DateTime.ParseExact("10/10/2023","dd/MM/yyyy", CultureInfo.CurrentCulture),DateTime.ParseExact("10/10/2023","dd/MM/yyyy", CultureInfo.CurrentCulture));
         
-        var student2 = new ImmutableStudent(1,"Emil","Kjelds",DateTime.ParseExact("08/10/2018","dd/MM/yyyy", null),
-        DateTime.ParseExact("10/10/2023","dd/MM/yyyy", null),DateTime.ParseExact("10/10/2023","dd/MM/yyyy", null));
+        var student2 = new ImmutableStudent(1,"Emil","Kjelds",DateTime.ParseExact("08/10/2018","dd/MM/yyyy", CultureInfo.CurrentCulture),
+        DateTime.ParseExact("10/10/2023","dd/MM/yyyy", CultureInfo.CurrentCulture),DateTime.ParseExact("10/10/2023","dd/MM/yyyy", CultureInfo.CurrentCulture));
         
         // When
         var result = student1 == student2;
