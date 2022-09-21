@@ -35,12 +35,12 @@ public class ExtensionsTests
     }
 
     [Fact]
-    public void TestIfHTTPReturnTrue()
+    public void TestIfHTTPSReturnTrue()
     {
         // Given
-        Uri uri = new Uri("http://[2607:f8b0:400d:c06::69]");
+        Uri uri = new Uri("https://[2607:f8b0:400d:c06::69]");
         // When
-        var result = Extensions.IsSecure(uri);
+        var result = uri.IsSecure();
         // Then
         Assert.True(result);
     }
@@ -49,9 +49,9 @@ public class ExtensionsTests
     public void TestIfHTTPReturnFalse()
     {
         // Given
-        Uri uri = new Uri("https://[2607:f8b0:400d:c06::69]");
+        Uri uri = new Uri("http://[2607:f8b0:400d:c06::69]");
         // When
-        var result = Extensions.IsSecure(uri);
+        var result = uri.IsSecure();
         // Then
         Assert.False(result);
     }
